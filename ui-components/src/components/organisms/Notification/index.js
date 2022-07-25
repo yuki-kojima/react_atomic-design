@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import styles from './style.css';
-import Img from '../../atoms/Img/index';
-import { InfoTxt } from '../../atoms/Txt/index';
-import Time from '../../atoms/Time/index';
-import DeleteButton from '../../molecules/DeleteButton/index';
-import Heading from '../../atoms/Heading/index';
+import styles from './styles.css';
+import Img from '../../atoms/Img/index.js';
+import Heading from '../../atoms/Heading/index.js';
+import { InfoTxt } from '../../atoms/Txt/index.js';
+import Time from '../../atoms/Time/index.js';
+import DeleteButton from '../../molecules/DeleteButton/index.js';
 
 export class NotificationContainer extends Component {
   constructor() {
@@ -16,7 +16,7 @@ export class NotificationContainer extends Component {
     const { presenter, onClickDelete:propsOnClickDelete, ...props } = this.props;
     const onClickDelete = propsOnClickDelete ? this.onClickDelete : null;
     const presenterProps = { onClickDelete, ...props };
-    return presenter(presenterProps)
+    return presenter(presenterProps);
   }
 
   onClickDelete(...args) {
@@ -25,11 +25,11 @@ export class NotificationContainer extends Component {
   }
 }
 
-const NotificationPresenter = ({
+export const NotificationPresenter = ({
   program,
   className,
   onClickDelete,
-  ...props
+  ...props,
 }) => (
   <section className={ [ styles.root, className ].join(' ') } { ...props }>
     <div>
@@ -37,9 +37,10 @@ const NotificationPresenter = ({
     </div>
     <div className={ styles.body }>
       <Heading level={ 3 } visualLevel={ 6 }>{ program.title }</Heading>
-      <InfoTxt size-="s">{ program.channelName }</InfoTxt>
-      <InfoTxt size-="s" className={ styles.time}>
-        <Time format="MM月DD日(ddd)HH:mm">{ program.startAt }</Time> 〜 <Time format="MM月DD日(ddd)HH:mm">{ program.endAt }</Time>
+      <InfoTxt size="s">{ program.channelName }</InfoTxt>
+      <InfoTxt size="s" className={ styles.time }>
+        <Time format="MM月DD日(ddd)HH:mm">{ program.startAt }</Time> ～
+        <Time format="HH:mm">{ program.endAt }</Time>
       </InfoTxt>
       <DeleteButton onClick={ onClickDelete } className={ styles.del } />
     </div>
@@ -48,7 +49,7 @@ const NotificationPresenter = ({
 
 const Notification = props => (
   <NotificationContainer
-    presenter={(presenterProps) => <NotificationPresenter {...presenterProps} />}
+    presenter={ presenterProps => <NotificationPresenter { ...presenterProps } /> }
     { ...props }
   />
 );

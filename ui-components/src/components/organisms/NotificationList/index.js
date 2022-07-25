@@ -1,22 +1,21 @@
-import React from "react";
-import Notification from "../Notification";
-import styles from './style.css';
+import React from 'react';
+import styles from './styles.css';
+import Notification from '../Notification/index.js';
 
 const NotificationList = ({
   programs,
   onClickDelete,
-  ...props
+  ...props,
 }) => (
-  <div {...props}>
+  <div { ...props }>
     { programs.map((program, idx) => (
       <Notification
-      key={ idx }
-      className={ styles.item }
-      program={ program }
-      onClickDelete={ onClickDelete }
-    />
-    ))}
+        key={ idx }
+        className={ styles.item }
+        program={ program }
+        onClickDelete={ onClickDelete }
+      />
+    )) }
   </div>
 );
-
 export default NotificationList;

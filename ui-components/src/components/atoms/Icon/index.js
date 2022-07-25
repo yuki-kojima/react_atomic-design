@@ -5,34 +5,32 @@ export const IconPresenter = ({
   iconName,
   height = 20,
   width = 20,
-  ...props
+  ...props,
 }) => (
   <img
     src={`/icons/${ iconName }.svg`}
-    alt=''
+    alt=""
     height={ height }
     width={ width }
     { ...props }
   />
-)
-
+);
 export const IconContainer = ({
   presenter,
   onClick,
-  className = "",
-  ...props
+  className = '',
+  ...props,
 }) => {
-  if (onClick) className += `${ styles.clickable}`;
-  return presenter({ onClick, className, ...props})
-}
+  if (onClick) className += ` ${ styles.clickable }`;
+  return presenter({ onClick, className, ...props });
+};
 
 export const iconFactory = iconName => props => (
   <IconContainer
-    presenter={ presenterProps => <IconPresenter {...presenterProps} />}
-    { ...{iconName, ...props}}
-    />
-)
-
+    presenter={ presenterProps => <IconPresenter { ...presenterProps } /> }
+    { ...{ iconName, ...props } }
+  />
+);
 
 export const TrashCanIcon = iconFactory('trash-can');
 export const ChevronRightIcon = iconFactory('chevron-right');

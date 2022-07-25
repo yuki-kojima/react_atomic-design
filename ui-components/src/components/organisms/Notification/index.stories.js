@@ -1,6 +1,6 @@
-import React from "react";
-import Notification from ".";
-import { action } from '@storybook/addon-actions';
+import React from 'react';
+import { action } from '@storybook/addon-actions'
+import Notification from './index.js';
 
 const notification = {
   id: 0,
@@ -9,7 +9,7 @@ const notification = {
   channelName: 'UI チャンネル',
   startAt: 1507032000000,
   endAt: 1507035600000,
-}
+};
 
 export default stories => stories
   .add('デフォルト', () => (
